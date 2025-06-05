@@ -14,17 +14,17 @@ Requirements of running the website locally.
 
 1. Clone the repository and navigate to the project folder:
 
-  ```console
-  $ git clone https://github.com/ToastL/loveufestival
-  $ cd loveufestival
+  ```bash
+  git clone https://github.com/ToastL/loveufestival
+  cd loveufestival
   ```
 2. Inside the root directory, install required dependencies;
 
-  ```console
-  $ npm i
+  ```bash
+  npm i
   ```
 3. Inside the root directory, start running the project:
   
-  ```console
-  $ npm run dev
+  ```bash
+  npm run dev
   ```
