@@ -4,7 +4,7 @@ function Home() {
 
   return (
     <>
-      <main className="space-y-10 px-10 pt-10">
+      <div className="space-y-10 px-10 pt-10">
         <h1 className="uppercase text-center text-xl text-black">
           Welcome to
           <br />
@@ -52,7 +52,7 @@ function Home() {
             <a className="flex justify-center w-full px-2 py-2 bg-[#f03228] text-white rounded-md" href="/lineup">Alle artiesten zien</a>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

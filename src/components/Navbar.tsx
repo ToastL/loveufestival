@@ -8,7 +8,7 @@ import CircleInfo from "./icons/CircleInfo"
 function Navbar() {
   return (
     <>
-      <nav className="fixed bottom-0 w-full h-20 px-10 pb- bg-white border-t border-neutral-300 flex justify-between z-10">
+      <nav className="fixed bottom-0 w-full h-20 px-10 bg-white border-t border-neutral-300 flex justify-between z-10">
         <Link to="/" className="flex content-center pb-6 w-7 h-full fill-neutral-300"><House /></Link>
         <Link to="/" className="flex content-center pb-6 w-7 h-full fill-neutral-300"><CircleInfo /></Link>
         <Link to="/lineup" className="flex content-center pb-6 w-7 h-full fill-neutral-300"><Calendar /></Link>

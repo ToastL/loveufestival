@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function getLocation(callback) {
+function getLocation(callback: PositionCallback) {
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(callback)
   } else {

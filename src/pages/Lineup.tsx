@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { lineup } from "../assets/dummyData";
 import LineupGrid from "../components/LineupGrid";
 
 export default function Event() {
-  const [selectedDay, setSelectedDay] = useState("zaterdag");
+  const [selectedDay, setSelectedDay] = useState<keyof typeof lineup>("zaterdag");
 
   return (
     <div className="p-4">

@@ -1,16 +1,26 @@
 import React, { useState } from "react";
-import { type Act, timeToMinutes } from "../assets/dummyData";
+import { timeToMinutes } from "../assets/dummyData";
+import type { Act } from "../assets/dummyData";
+
+export interface Stage {
+  stage: string;
+  performances: Act[];
+}
+
+export type LineupGridProps = {
+  acts?: Array<Act | Stage>;
+};
 
 const startTime = timeToMinutes("10:00");
 const endTime = timeToMinutes("23:45");
 const totalMinutes = endTime - startTime;
 
-export default function LineupGrid({ acts = [] }) {
-  let stagesMap = {};
-  let uniqueStages = [];
+export default function LineupGrid({ acts = [] }: LineupGridProps) {
+  const stagesMap: Record<string, Act[]> = {};
+  const uniqueStages: string[] = [];
 
-  if (acts.length && acts[0].artist) {
-    acts.forEach((act) => {
+  if (acts.length && "artist" in (acts[0] as Act)) {
+    (acts as Act[]).forEach((act) => {
       if (!stagesMap[act.stage]) {
         stagesMap[act.stage] = [];
         uniqueStages.push(act.stage);
@@ -18,7 +28,7 @@ export default function LineupGrid({ acts = [] }) {
       stagesMap[act.stage].push(act);
     });
   } else {
-    acts.forEach((stage) => {
+    (acts as Stage[]).forEach((stage) => {
       if (!stagesMap[stage.stage]) {
         stagesMap[stage.stage] = [];
         uniqueStages.push(stage.stage);
@@ -29,27 +39,31 @@ export default function LineupGrid({ acts = [] }) {
     });
   }
 
-  const [hearted, setHearted] = useState({});
-  const [infoOpen, setInfoOpen] = useState({});
+  const [hearted, setHearted] = useState<Record<string, boolean>>({});
+  const [infoOpen, setInfoOpen] = useState<Record<string, boolean>>({});
 
-  const toggleHeart = (key) => {
+  const toggleHeart = (key: string) =>
     setHearted((prev) => ({
       ...prev,
       [key]: !prev[key],
     }));
-  };
 
-  const toggleInfo = (key) => {
+  const toggleInfo = (key: string) =>
     setInfoOpen((prev) => ({
       ...prev,
       [key]: !prev[key],
     }));
-  };
 
   return (
-    <div className="overflow-auto w-full h-[full] border rounded bg-white">
-      <div className="min-w-[1500px] relative grid" style={{ gridTemplateColumns: "100px repeat(56,1fr)" }}>
-        <div className="sticky top-0 bg-white z-10 border-b border-r" style={{ gridColumn: 1, gridRow: 1 }}></div>
+    <div className="overflow-auto w-full h-full border rounded bg-white">
+      <div
+        className="min-w-[1500px] relative grid"
+        style={{ gridTemplateColumns: "100px repeat(56,1fr)" }}
+      >
+        <div
+          className="sticky top-0 bg-white z-10 border-b border-r"
+          style={{ gridColumn: 1, gridRow: 1 }}
+        ></div>
         {Array.from({ length: 56 }, (_, i) => {
           const hour = 10 + Math.floor(i / 4);
           const minute = (i % 4) * 15;
@@ -88,14 +102,21 @@ export default function LineupGrid({ acts = [] }) {
           );
         })}
 
-        {uniqueStages.map((stageName, stageIdx) =>
+        {uniqueStages.flatMap((stageName, stageIdx) =>
           stagesMap[stageName].map((act, index) => {
             const start = timeToMinutes(act.start);
             const end = timeToMinutes(act.end);
-            const colStart = Math.floor(((start - startTime) / totalMinutes) * 56) + 2;
-            const colEnd = Math.ceil(((end - startTime) / totalMinutes) * 56) + 2;
+            const colStart =
+              Math.floor(((start - startTime) / totalMinutes) * 56) + 2;
+            const colEnd =
+              Math.ceil(((end - startTime) / totalMinutes) * 56) + 2;
             const row = stageIdx + 2;
-            const key = stageName + "-" + (act.artist || act.name || index) + "-" + index;
+            const key =
+              stageName +
+              "-" +
+              (act.artist || index) +
+              "-" +
+              index;
 
             return (
               <React.Fragment key={key}>
@@ -108,10 +129,16 @@ export default function LineupGrid({ acts = [] }) {
                     margin: "2px 0",
                   }}
                 >
-                  <span>{act.artist || act.name}</span>
+                  <span>{act.artist}</span>
                   <button
                     onClick={() => toggleHeart(key)}
-                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "1.2em", lineHeight: 1 }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "1.2em",
+                      lineHeight: 1,
+                    }}
                     aria-label="Toggle favorite"
                     tabIndex={0}
                   >
@@ -119,7 +146,13 @@ export default function LineupGrid({ acts = [] }) {
                   </button>
                   <button
                     onClick={() => toggleInfo(key)}
-                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "1.2em", lineHeight: 1 }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "1.2em",
+                      lineHeight: 1,
+                    }}
                     aria-label="Meer info"
                     tabIndex={0}
                   >
@@ -135,19 +168,33 @@ export default function LineupGrid({ acts = [] }) {
                       zIndex: 40,
                     }}
                   >
-                    <div><b>Artiest:</b> {act.artist || act.name}</div>
-                    <div><b>Tijd:</b> {act.start} - {act.end}</div>
+                    <div>
+                      <b>Artiest:</b> {act.artist}
+                    </div>
+                    <div>
+                      <b>Tijd:</b> {act.start} - {act.end}
+                    </div>
                     {act.description && (
-                      <div className="mt-2"><b>Beschrijving:</b> {act.description}</div>
+                      <div className="mt-2">
+                        <b>Beschrijving:</b> {act.description}
+                      </div>
                     )}
                     {act.image && (
                       <div className="mt-2">
-                        <img src={act.image} alt={act.artist || act.name} className="w-full h-32 object-cover rounded" />
+                        <img
+                          src={act.image}
+                          alt={act.artist}
+                          className="w-full h-32 object-cover rounded"
+                        />
                       </div>
                     )}
                     {act.video && (
                       <div className="mt-2">
-                        <video src={act.video} controls className="w-full h-32 rounded" />
+                        <video
+                          src={act.video}
+                          controls
+                          className="w-full h-32 rounded"
+                        />
                       </div>
                     )}
                   </div>

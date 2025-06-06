@@ -12,11 +12,13 @@ function App() {
       <Router>
         <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/lineup" element={<Lineup />} />
-        </Routes>
+        <main className="mb-22">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/map" element={<Map />} />
+            <Route path="/lineup" element={<Lineup />} />
+          </Routes>
+        </main>
       </Router>
     </>
   )
