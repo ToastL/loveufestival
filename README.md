@@ -10,8 +10,6 @@ Welkom bij de festivalwebapp voor het ❤️U Festival – een feestelijk initia
 - [Technologieën](#-technologieën)
 - [Gebruik](#-gebruik)
 
----
-
 ## 🚀 Installatie
 
 ### Vereisten
@@ -40,8 +38,6 @@ npm run dev
 ```
 
 De app draait nu lokaal op http://localhost:5173 (standaard Vite-poort).
-
-⸻
 
 ## 🧱 Architectuur
 
@@ -73,16 +69,12 @@ Routing wordt afgehandeld via react-router-dom. De belangrijkste routes zijn:
 	•	Responsieve grid voor line-up: tijdslijn van 10:00 tot 23:45 met 15-minuten slots.
 	•	Flexibele datastructuur: line-up accepteert zowel platte acts[] als geneste stages[].
 
-⸻
-
 ## 🛠️ Technologieën
 	•	React 18+
 	•	TypeScript
 	•	TailwindCSS
 	•	Vite
 	•	ESLint + Prettier
-
-⸻
 
 ## 🧪 Gebruik
 	•	Navigeer tussen dagen met de buttons ‘Zaterdag’ en ‘Zondag’
