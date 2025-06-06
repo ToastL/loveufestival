@@ -150,6 +150,8 @@ export const lineup = {
   ]
 };
 
+export type Act = typeof lineup.zaterdag[0]
+
 export function timeToMinutes(time: string) {
   const now = new Date().getFullYear()
   const date = new Date(`${now} ${time}`)
@@ -157,4 +159,76 @@ export function timeToMinutes(time: string) {
   return date.getHours()*60 + date.getMinutes()
 }
 
-export type Act = typeof lineup.zaterdag[0]
+export const infoNl = {
+  general: {
+    title: "Algemeen & contact",
+    description:
+      "Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is een aanvulling op UIT.",
+    address: {
+      location: "Strijkviertel, Utrecht",
+      navigation: "Strijkviertelweg, Utrecht",
+    },
+    dateTime: "Zaterdag 6 september 2025 – 12:00 tot 23:00 uur",
+  },
+  transport: {
+    title: "Bereikbaarheid",
+    modes: [
+      {
+        mode: "Fiets",
+        details:
+          "Er is een grote gratis fietsenstalling aanwezig waar je jouw fiets de gehele dag kunt stallen.",
+      },
+      {
+        mode: "Auto",
+        details:
+          "Je kunt een parkingticket aanschaffen. Parkeren kan op P+R Papendorp, volg hiervoor de borden 'P online ticket'. Heb je geen ticket van te voren gekocht? Dan kun je bij de parkeerwachter op locatie een parkeerticket aanschaffen (PIN ONLY). Let wel op: VOL=VOL",
+      },
+      {
+        mode: "OV",
+        details:
+          "Kom je met het openbaar vervoer naar Lief? Plan dan je trip via \u00A0",
+        link: {
+          href: "https://9292.nl/",
+          label: "9292.nl",
+        },
+      },
+      {
+        mode: "Shuttlebus",
+        details:
+          "Vanaf Utrecht Centraal kun je onze gratis shuttlebus richting het festivalterrein pakken. Je vindt deze bus op het centraal station aan de Mineurslaan. Volg de witte bordjes met zwarte pijlen én ' ❤️U Festival'. De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 uur kun je weer instappen om richting het station te gaan.",
+      },
+      {
+        mode: "Taxi + Kiss & Ride",
+        details:
+          "Navigeer naar Strijkviertel, De Meern (Utrecht). Volg de borden \"Kiss & Ride ❤️U Festival\", zodra je in de buurt bent van het festivalterrein.",
+      },
+    ],
+  },
+  lockers: {
+    title: "Lockers",
+    text: "Op het festivalterrein zijn kluisjes aanwezig waar je je spullen veilig kunt opbergen! Hier passen 3 à 4 jassen in. Goed om te weten: je kunt je kluisje gedurende de hele dag openen en sluiten zo vaak je wilt. Het is niet mogelijk om online een kluisje te reserveren.",
+  },
+  faq: {
+    title: "FAQ",
+    items: [
+      {
+        q: "Ik gebruik medicatie. Wat nu?",
+        a: "Het is toegestaan om medicijnen mee te nemen in een dosis die je maximaal nodig hebt op 1 dag. Een doktersverklaring/medicatiepaspoort is noodzakelijk. De beveiliging zal jouw documentatie beoordelen en de medicijnen controleren. Het kan zijn dat de EHBO jouw medicijnen (bijvoorbeeld als deze gevaarlijk zijn i.c.m. alcohol) in bewaring neemt en je deze enkel kan innemen bij de EHBO.",
+      },
+      {
+        q: "Mag ik het festivalterrein tussentijds verlaten?",
+        a: "Nee, helaas is dat niet mogelijk. Om de veiligheid van alle bezoekers te kunnen waarborgen, kunnen we het niet toestaan dat het festivalterrein tussentijds verlaten wordt. Wij hebben namelijk geen zicht op hetgeen wat een bezoeker buiten het festivalterrein doet en in welke staat deze het terrein weer betreedt. Hier kunnen dan ook geen uitzonderingen voor gemaakt worden. Wij hebben genoeg loungeplekken, foodstands & barren om het een hele dag uit te kunnen houden.",
+      },
+      {
+        q: "Zijn er lockers?",
+        a: "Yes, deze zijn er! Op het terrein kun je medium & grote lockers huren.",
+      },
+    ],
+  },
+  golden: {
+    title: "Golden-GLU",
+    text: "Studenten van het GLU hebben tijdens het festival speciale privileges en zijn herkenbaar aan een gouden armbandje. Met dit gouden armbandje kunnen ze tijdens het festival gebruik maken van de gouden toiletten en met goud gemarkeerde bestelpunten aan de bars zonder in een rij te hoeven staan.",
+  },
+} as const;
+
+export type InfoContent = typeof infoNl;
