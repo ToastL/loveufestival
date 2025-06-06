@@ -49,4 +49,7 @@ export default defineConfig({
       type: 'module',
     },
   })],
+  preview: {
+    allowedHosts: [ "loveufestival-production.up.railway.app" ]
+  }
 })
