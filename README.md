@@ -4,11 +4,11 @@ Welkom bij de festivalwebapp voor het ❤️U Festival – een feestelijk initia
 
 ## 📚 Inhoudsopgave
 
-- [Installatie](#installatie)
-- [Architectuur](#architectuur)
-- [Belangrijke keuzes](#belangrijke-keuzes)
-- [Technologieën](#technologieën)
-- [Gebruik](#gebruik)
+- [Installatie](#-installatie)
+- [Architectuur](#-architectuur)
+- [Belangrijke keuzes](#-belangrijke-keuzes)
+- [Technologieën](#-technologieën)
+- [Gebruik](#-gebruik)
 
 ---
 
